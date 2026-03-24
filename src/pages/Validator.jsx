@@ -68,17 +68,17 @@ export default function Validator({
             <div className="r-actions">
               {items.some(i => i.result) && (
                 <>
-                  <button className="btn-ghost" onClick={() => setShowLog(v => !v)}>
+                  <button className="btn-ghost bright" onClick={() => setShowLog(v => !v)}>
                     {showLog ? 'HIDE LOG' : 'LOG'}
                   </button>
-                  <button className="btn-ghost" onClick={handleDownloadLog}>
+                  <button className="btn-ghost bright" onClick={handleDownloadLog}>
                     ↓ TXT
                   </button>
                 </>
               )}
               {selected && (
                 <button
-                  className="btn-ghost green"
+                  className="btn-ghost bright green"
                   onClick={() => onOpenViewer(selected)}
                 >
                   VIEWER &#8594;
@@ -139,11 +139,6 @@ export default function Validator({
 
       <footer className="footer">
         <div className="foot-l">&copy; 2026 Try&#123;pl&#125;</div>
-        <div className="foot-r">
-          <a href="https://presentation-validator.iiif.io" target="_blank" rel="noreferrer">
-            IIIF Presentation Validator
-          </a>
-        </div>
       </footer>
     </div>
   );

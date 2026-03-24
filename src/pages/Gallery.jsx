@@ -75,7 +75,6 @@ export default function Gallery({
 
       <footer className="footer">
         <div className="foot-l">&copy; 2026 Try&#123;pl&#125;</div>
-        <div className="foot-r">IIIF Gallery</div>
       </footer>
     </div>
   );

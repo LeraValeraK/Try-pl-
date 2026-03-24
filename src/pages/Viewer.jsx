@@ -70,11 +70,6 @@ export default function Viewer({
 
       <footer className="footer">
         <div className="foot-l">&copy; 2026 Try&#123;pl&#125;</div>
-        <div className="foot-r">
-          <a href="https://projectmirador.org" target="_blank" rel="noreferrer">
-            Mirador 3
-          </a>
-        </div>
       </footer>
     </div>
   );

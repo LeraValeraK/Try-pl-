@@ -23,7 +23,7 @@ function loadMiradorScript() {
 }
 
 export default function MiradorViewer({ manifestUrl }) {
-  const wrapRef    = useRef(null);
+  const wrapRef     = useRef(null);
   const instanceRef = useRef(null);
 
   useEffect(() => {
@@ -34,38 +34,17 @@ export default function MiradorViewer({ manifestUrl }) {
 
     loadMiradorScript().then(() => {
       if (!mounted || !wrapRef.current) return;
-      // destroy previous
       if (instanceRef.current) {
         try { instanceRef.current = null; } catch {}
         wrapRef.current.innerHTML = '';
       }
-      const id   = `mirador-${Date.now()}`;
-      const div  = document.createElement('div');
+      const id  = `mirador-${Date.now()}`;
+      const div = document.createElement('div');
       div.id = id;
       wrapRef.current.appendChild(div);
 
       try {
-        instanceRef.current = window.Mirador.viewer({
-          id,
-          windows: [{
-            manifestId:                    manifestUrl,
-            view:                          'single',
-            thumbnailNavigationPosition:   'far-bottom',
-          }],
-          window: {
-            allowClose:      false,
-            allowMaximize:   false,
-            allowFullscreen: true,
-            sideBarOpen:     false,
-          },
-          workspace: {
-            showZoomControls:      true,
-            draggingEnabled:       false,
-            allowNewWindows:       false,
-            isWorkspaceAddVisible: false,
-          },
-          workspaceControlPanel: { enabled: false },
-        });
+        instanceRef.current = window.Mirador.viewer({ id, windows: [{ manifestId: manifestUrl }] });
       } catch (e) {
         console.error('[MiradorViewer]', e);
       }
@@ -79,11 +58,7 @@ export default function MiradorViewer({ manifestUrl }) {
   }, [manifestUrl]);
 
   return (
-    <div
-      ref={wrapRef}
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-    >
-      {/* placeholder shown until Mirador hydrates */}
+    <div ref={wrapRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
       <div className="mirador-loading">
         <div className="mirador-loading-icon">📜</div>
         <span>// loading Mirador</span>
