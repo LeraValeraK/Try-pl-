@@ -103,3 +103,4 @@ trypl/
 - The IIIF Validator API is a public service; no API key required.
 - Mirador 3 is loaded from jsDelivr CDN at runtime (not bundled).
 - All state is in-memory; nothing is persisted between sessions.
+
